@@ -126,6 +126,7 @@ public class PanelDeInternacion extends javax.swing.JFrame {
 
         jLabel3.setText("Diagnostico (Obligatorio)");
 
+        jtf_Fecha.setText("AAAA-MM-DD");
         jtf_Fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_FechaActionPerformed(evt);

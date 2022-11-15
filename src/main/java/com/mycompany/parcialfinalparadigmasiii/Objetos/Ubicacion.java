@@ -14,6 +14,7 @@ public class Ubicacion {
     private Integer id;
 private String hospital;
     private String nombre;
+    
     public Integer getId() {
         return id;
     }
