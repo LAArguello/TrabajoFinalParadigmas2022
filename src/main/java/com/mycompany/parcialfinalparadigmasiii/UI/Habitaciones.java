@@ -435,11 +435,11 @@ jl_numcama.setText(Integer.toString(ncama));
         for(int i=0; i<camas.size();i++){
             cama=camas.get(i);
             z=i;
-        
             if(cama.getHabitacion()== habitacioneliminada.getNumero()){
                 if(cama.getEstado().equals("Ocupada")){
          jOptionPane1.showMessageDialog(jOptionPane1, "No se puede eliminar habitacion porque tiene una cama ocupada");
-        
+       //se coloca un break para que no busque mas, ya que encontro una cama de la habitacion ocupada
+         break;
                 } else if(cama.getEstado().equals("Disponible")){
                     try {
                         //al eliminar la habitacion, hay que eliminar las camas que correspondan a la misma
@@ -471,7 +471,42 @@ jl_numcama.setText(Integer.toString(ncama));
                     Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
+            
+            
+           
         }
+        //TRY COPIADO DEL INICIO PARA QUE SE RECARGUEN TODOS LOS DATOS DESPUES DE ELIMINAR TANTO HABITACION COMO CAMA
+         try {
+            //se listan las habitaciones y camas para llenar las grillas y cbox
+            cb_habitacion.removeAllItems();
+            habitaciones=controladorhabitacion.listar();
+            grillahabitacion= new GrillaHabitacion(habitaciones);
+            jtHabitacion.setModel(grillahabitacion);
+            camas=controladorcama.listar();
+            grillacama= new GrillaCama(camas);
+            jtCamas.setModel(grillacama);
+            //numero cama sirve para darle valor a la proxima cama
+            Integer numerocama=camas.size() + 1;
+            jl_numcama.setText(String.valueOf(numerocama));
+            // este ciclo sirve para traer los numeros de habitaciones disponibles
+            for(int i=0; i<habitaciones.size();i++){
+                habitacion=habitaciones.get(i);
+                cb_habitacion.addItem(String.valueOf(habitacion.getNumero()));
+            }
+// el nuevo numero de habitacion va a ser el ultimo + uno
+                Integer numerohabitacion=habitaciones.size() + 1;
+                jl_numHabitacion.setText(String.valueOf(numerohabitacion));
+       
+            ubicaciones=controladorubicacion.listar();
+            //For para traer las ubicaciones para agregar la habitacion
+            for(int i=0;i<ubicaciones.size(); i++){
+                ubicacion=ubicaciones.get(i);
+                cb_ubicacion.addItem(ubicacion.getHospital());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
         
     }//GEN-LAST:event_b_EliminarHabActionPerformed
 
