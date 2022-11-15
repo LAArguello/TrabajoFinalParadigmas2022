@@ -25,7 +25,7 @@ return habitaciones.size();
 
     @Override
     public int getColumnCount() {
-return 3;
+return 2;
     }
 
     @Override
@@ -34,7 +34,6 @@ return 3;
          switch(columnIndex){
               case 0: return habitacion.getNumero();
               case 1: return habitacion.getUbicacion();
-              case 2: return habitacion.getCama();
               default: return "";
           }
     }
@@ -42,9 +41,7 @@ return 3;
     public String getColumnName(int column) {
         switch(column){
             case 0: return "NRO HABITACION";
-            case 1: return "UBICACION";
-            case 2: return "CAMAS";
-      
+            case 1: return "UBICACION";      
             default: return "";
         
         

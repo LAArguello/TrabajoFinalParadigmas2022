@@ -55,8 +55,18 @@ connection = ConexionBD.obtenerConexion();
 
     @Override
     public boolean eliminar(Cama entidad) throws SQLException, Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
+        connection = ConexionBD.obtenerConexion();
+        String sql = "DELETE FROM cama WHERE numero =?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, entidad.getNumero());
+            ps.executeUpdate();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorCama.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
     @Override
     public Cama extraer(int id) throws SQLException, Exception {

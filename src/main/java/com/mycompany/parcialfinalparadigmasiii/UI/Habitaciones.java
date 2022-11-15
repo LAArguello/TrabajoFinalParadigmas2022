@@ -92,6 +92,7 @@ public class Habitaciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
+        jOptionPane1 = new javax.swing.JOptionPane();
         num_internacion = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtHabitacion = new javax.swing.JTable();
@@ -108,6 +109,8 @@ public class Habitaciones extends javax.swing.JFrame {
         cb_habitacion = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        b_EliminarHab = new javax.swing.JToggleButton();
+        b_EliminarCama = new javax.swing.JToggleButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -214,6 +217,20 @@ public class Habitaciones extends javax.swing.JFrame {
             }
         });
 
+        b_EliminarHab.setText("Eliminar Habitacion");
+        b_EliminarHab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_EliminarHabActionPerformed(evt);
+            }
+        });
+
+        b_EliminarCama.setText("Eliminar Cama");
+        b_EliminarCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_EliminarCamaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,16 +239,20 @@ public class Habitaciones extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cb_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1)
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jl_numHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(num_internacion))
+                    .addComponent(num_internacion)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cb_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(b_EliminarHab))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 252, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -247,6 +268,8 @@ public class Habitaciones extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(b_EliminarCama)
+                        .addGap(136, 136, 136)
                         .addComponent(jButton2)
                         .addGap(25, 25, 25))))
             .addGroup(layout.createSequentialGroup()
@@ -272,7 +295,9 @@ public class Habitaciones extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(cb_habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(b_EliminarCama))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -284,7 +309,9 @@ public class Habitaciones extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(cb_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(b_EliminarHab))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -381,6 +408,73 @@ jl_numcama.setText(Integer.toString(ncama));
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void b_EliminarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_EliminarCamaActionPerformed
+        // TODO add your handling code here:
+        Cama camaeliminada= new Cama();
+        camaeliminada=grillacama.getCamaFromRow(jtCamas.getSelectedRow());
+        if(camaeliminada.getEstado().equals("Disponible")){
+            try {
+                controladorcama.eliminar(camaeliminada);
+                camas=controladorcama.listar();
+                grillacama=new GrillaCama(camas);
+                jtCamas.setModel(grillacama);
+            } catch (Exception ex) {
+                Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else if (camaeliminada.getEstado().equals("Ocupada")){
+      jOptionPane1.showMessageDialog(jOptionPane1, "No puede eliminar la habitacion porque la misma se encuentra ocupada.");
+ 
+        }
+    }//GEN-LAST:event_b_EliminarCamaActionPerformed
+
+    private void b_EliminarHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_EliminarHabActionPerformed
+        Habitacion habitacioneliminada = new Habitacion();
+        Integer z=null;
+        habitacioneliminada=grillahabitacion.getHabitacionFromRow(jtHabitacion.getSelectedRow());
+        //for para saber si hay alguna cama ocupada en la habitacion a eliminar
+        for(int i=0; i<camas.size();i++){
+            cama=camas.get(i);
+            z=i;
+        
+            if(cama.getHabitacion()== habitacioneliminada.getNumero()){
+                if(cama.getEstado().equals("Ocupada")){
+         jOptionPane1.showMessageDialog(jOptionPane1, "No se puede eliminar habitacion porque tiene una cama ocupada");
+        
+                } else if(cama.getEstado().equals("Disponible")){
+                    try {
+                        //al eliminar la habitacion, hay que eliminar las camas que correspondan a la misma
+                        controladorcama.eliminar(cama);
+                        if(z==camas.size()-1){
+                         controladorhabitacion.eliminar(habitacioneliminada);
+                        habitaciones=controladorhabitacion.listar();
+                        grillahabitacion=new GrillaHabitacion(habitaciones);
+                        jtHabitacion.setModel(grillahabitacion);
+                                  camas=controladorcama.listar();
+                grillacama=new GrillaCama(camas);
+                jtCamas.setModel(grillacama);
+                    }
+      
+                    } catch (Exception ex) {
+                        Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+            } 
+            else if (z==camas.size()-1){
+                try {
+                    //No tiene ninguna cama entonces se elimina directamente
+                    controladorhabitacion.eliminar(habitacioneliminada);
+                    habitaciones=controladorhabitacion.listar();
+                    grillahabitacion=new GrillaHabitacion(habitaciones);
+                    jtHabitacion.setModel(grillahabitacion);
+                } catch (Exception ex) {
+                    Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        }
+        
+    }//GEN-LAST:event_b_EliminarHabActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,6 +514,8 @@ jl_numcama.setText(Integer.toString(ncama));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton b_EliminarCama;
+    private javax.swing.JToggleButton b_EliminarHab;
     private javax.swing.JComboBox<String> cb_habitacion;
     private javax.swing.JComboBox<String> cb_ubicacion;
     private javax.swing.JButton jButton1;
@@ -430,6 +526,7 @@ jl_numcama.setText(Integer.toString(ncama));
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel jl_numHabitacion;

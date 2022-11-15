@@ -7,11 +7,13 @@ com\mycompany\parcialfinalparadigmasiii\UI\Desocupar.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$11.class
 com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$3.class
 com\mycompany\parcialfinalparadigmasiii\UI\Desocupar$5.class
+com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$11.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$12.class
 Controladores\ControladorInternacion.class
 Controladores\ICrud.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$9.class
 com\mycompany\parcialfinalparadigmasiii\UI\Desocupar$6.class
+com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$10.class
 com\mycompany\parcialfinalparadigmasiii\Objetos\Cama.class
 com\mycompany\parcialfinalparadigmasiii\UI\Desocupar$3.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$4.class
@@ -19,6 +21,7 @@ com\mycompany\parcialfinalparadigmasiii\Connection\ConexionBD.class
 com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$5.class
 Grilla\GrillaHabitacion.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$7.class
+com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$9.class
 com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$2.class
 com\mycompany\parcialfinalparadigmasiii\UI\PanelDeInternacion$10.class
 com\mycompany\parcialfinalparadigmasiii\UI\Habitaciones$4.class
